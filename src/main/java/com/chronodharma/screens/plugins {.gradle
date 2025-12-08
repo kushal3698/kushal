@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+}
+
+ext { gdxVersion = '1.12.1' }
+
+dependencies {
+    implementation "com.badlogic.gdx:gdx:$gdxVersion"
+    implementation "com.badlogic.gdx:gdx-backend-lwjgl3:$gdxVersion"
+    implementation "com.badlogic.gdx:gdx-platform:$gdxVersion:natives-desktop"
+}
+
+application {
+    mainClass = 'com.chronodharma.desktop.DesktopLauncher'
+}
+
+sourceSets.main.java.srcDirs = [ "src/main/java" ]
+sourceSets.main.resources.srcDirs = [ "src/main/resources" ]
+
+tasks.register('runGame', JavaExec) {
+    group = 'application'
+    description = 'Runs the game with the assets folder as working directory.'
+    mainClass = 'com.chronodharma.desktop.DesktopLauncher'
+    classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
+    workingDir = project.file("assets")
+    ignoreExitValue = true
+}
