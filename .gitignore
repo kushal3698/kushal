@@ -1,0 +1,19 @@
+# Gradle
+.gradle/
+build/
+out/
+gradle/wrapper/gradle-wrapper.jar
+
+# IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+bin/
+
+# Temporary files
+temp-gradle-*/
+*.log
+*.DS_Store
+Thumbs.db
