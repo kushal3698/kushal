@@ -1,5 +1,6 @@
 package com.chronodharma.ui;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -7,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.chronodharma.MainGame;
 import com.chronodharma.screens.ScreenManager;
 import com.chronodharma.systems.TimeMachine;
@@ -24,7 +26,8 @@ public class TimeMachineUI {
     public TimeMachineUI(MainGame game, TimeMachine timeMachine, Skin skin) {
         this.game = game;
         this.timeMachine = timeMachine;
-        this.stage = new Stage();
+        this.stage = new Stage(new ScreenViewport());
+        this.stage.getViewport().update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), true);
 
         Table table = new Table();
         table.setFillParent(true);

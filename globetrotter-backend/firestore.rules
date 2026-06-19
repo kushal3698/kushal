@@ -1,0 +1,33 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    match /players/{playerId} {
+      allow read, update, delete: if isSignedIn() && request.auth.uid == playerId;
+      allow create: if isSignedIn() && request.auth.uid == playerId && request.resource.data.keys().hasOnly(['currentEra','fuel','artifacts','lastMissionId','position','updatedAt']);
+    }
+
+    match /telemetry/{docId} {
+      allow create: if isSignedIn();
+      allow read: if false;
+    }
+
+    match /missions/{missionId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /leaderboards/{season}/entries/{entryId} {
+      allow read: if true;
+      allow write: if isSignedIn() && request.auth.uid == entryId;
+    }
+
+    match /dailyMission/{docId} {
+      allow read: if true;
+      allow write: if false;
+    }
+  }
+}

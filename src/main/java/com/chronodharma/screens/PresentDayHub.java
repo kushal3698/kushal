@@ -59,6 +59,9 @@ public class PresentDayHub extends ScreenAdapter {
         // Create UI
         timeMachineUI = new TimeMachineUI(game, timeMachine, skin);
         stage = timeMachineUI.getStage();
+        if (stage != null) {
+            stage.getViewport().update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), true);
+        }
         Gdx.input.setInputProcessor(stage);
     }
 
@@ -70,6 +73,13 @@ public class PresentDayHub extends ScreenAdapter {
         if (stage != null) {
             stage.act(delta);
             stage.draw();
+        }
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        if (stage != null) {
+            stage.getViewport().update(width, height, true);
         }
     }
 

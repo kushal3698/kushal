@@ -4,8 +4,10 @@ plugins {
     id 'application'
 }
 
-sourceCompatibility = 21
-targetCompatibility = 21
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
 
 repositories {
     mavenCentral()
@@ -38,5 +40,6 @@ tasks.register('runGame', JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     standardInput = System.in
     workingDir = project.file("assets")
+    jvmArgs '--enable-native-access=ALL-UNNAMED'
     ignoreExitValue = true
 }

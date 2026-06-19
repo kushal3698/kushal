@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Globetrotter: The Lost Coordinates</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="passport-header">
+        <div>
+          <p class="eyebrow">Chrono Guild Dispatch</p>
+          <h1>Globetrotter: The Lost Coordinates</h1>
+          <p class="subtitle">Decode the riddle, pin the site, secure the relic.</p>
+        </div>
+        <div class="status-chip">
+          <span>Fuel</span>
+          <strong id="fuelValue">100</strong>
+        </div>
+      </header>
+
+      <main class="grid">
+        <section class="hud-card" aria-live="polite">
+          <h2>Briefing</h2>
+          <p id="riddleText">Loading request…</p>
+          <div class="hud-row">
+            <button id="travelBtn" class="primary">Next Request</button>
+            <button id="resetBtn" class="ghost">Reset Game</button>
+          </div>
+          <p class="meta" id="feedbackText">Awaiting your first jump.</p>
+        </section>
+
+        <section class="map-panel">
+          <div id="map" role="application" aria-label="World map"></div>
+          <div class="map-overlay">
+            <p><strong>Mission:</strong> Click within 50 km of the target city. Each jump costs fuel.</p>
+          </div>
+        </section>
+
+        <section class="museum-card">
+          <h2>Museum Inventory</h2>
+          <ul id="museumList"></ul>
+        </section>
+      </main>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

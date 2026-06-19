@@ -1,0 +1,26 @@
+{
+  "name": "globetrotter-functions",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint --ext .ts src",
+    "serve": "npm run build && firebase emulators:start --project globetrotter-placeholder",
+    "deploy": "npm run build && firebase deploy --only functions,firestore:indexes,firestore:rules",
+    "seed:missions": "node scripts/seed-missions.js"
+  },
+  "engines": {
+    "node": "20"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^5.1.0",
+    "luxon": "^3.5.0"
+  },
+  "devDependencies": {
+    "@types/luxon": "^3.7.1",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint": "^9.10.0",
+    "typescript": "^5.6.3"
+  }
+}
